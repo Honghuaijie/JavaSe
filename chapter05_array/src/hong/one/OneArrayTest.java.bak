@@ -37,7 +37,7 @@ public class OneArrayTest {
         String[] foods = new String[4] ;
 
         //其他正确的方式
-        int arr1[] = {1,2,3,4,5};
+        int arr1[] = {1,2,3,4，5};
 
         // 2.数组元素的调用
         // 通过角标的方式，获取数组的元素
