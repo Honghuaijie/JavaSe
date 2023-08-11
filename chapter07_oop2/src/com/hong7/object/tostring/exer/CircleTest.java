@@ -12,6 +12,7 @@ package com.hong7.object.tostring.exer;
  */
 public class CircleTest {
     public static void main(String[] args) {
+
         Circle c1 = new Circle(2);
         Circle c2 = new Circle(3,"red",3);
         Circle c3 = new Circle(2,"red",3);
