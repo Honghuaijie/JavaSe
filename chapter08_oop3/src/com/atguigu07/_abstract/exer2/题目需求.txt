@@ -1,5 +1,6 @@
 
-编写工资系统，实现不同类型员工(多态)的按月发放工资。如果当月出现某个Employee对象的生日，则将该雇员的工资增加100元。
+编写工资系统，实现不同类型员工(多态)的按月发放工资。
+如果当月出现某个Employee对象的生日，则将该雇员的工资增加100元。
 
 实验说明：
 
@@ -19,7 +20,8 @@ toDateString()方法返回日期对应的字符串：xxxx年xx月xx日
 该类包括：private成员变量monthlySalary；
 提供必要的构造器；
 实现父类的抽象方法earnings(),该方法返回monthlySalary值；
-toString()方法输出员工类型信息及员工的name，number,birthday。比如：SalariedEmployee[name = '',number = ,birthday=xxxx年xx月xx日]
+toString()方法输出员工类型信息及员工的name，number,birthday。
+比如：SalariedEmployee[name = '',number = ,birthday=xxxx年xx月xx日]
 
 （4）参照SalariedEmployee类定义HourlyEmployee类，实现按小时计算工资的员工处理。该类包括：
 private成员变量wage和hour；
