@@ -18,12 +18,12 @@ public class Debug02 {
 //        Son instance = new Son();
 //        instance.test();
 //        //2.类的多态性
-        Father instance1 = new Son();
-        instance1.test();
+//        Father instance1 = new Son();
+//        instance1.test();
 //
 //        //3.接口的多态性
-        Consumer con = new ConsumerImpl();
-        con.accept("atguigu");
+//        Consumer con = new ConsumerImpl();
+//        con.accept("atguigu");
 //
 //        //4.
         HashMap map = new HashMap();

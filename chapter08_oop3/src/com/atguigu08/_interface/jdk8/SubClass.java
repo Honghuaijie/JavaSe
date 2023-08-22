@@ -22,9 +22,9 @@ public class SubClass extends SuperClass implements CompareA,CompareB{
         System.out.println("SubClass: method3");
     }
 
-    public void method4(){
-        System.out.println("subclass：method4");
-    }
+//    public void method4(){
+//        System.out.println("subclass：method4");
+//    }
 
     public void method5(){
     //知识点5：如何在实现类中调用父类或接口中被重写的方法。

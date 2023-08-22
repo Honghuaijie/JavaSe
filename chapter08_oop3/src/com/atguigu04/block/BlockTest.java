@@ -20,7 +20,6 @@ public class BlockTest {
 
 class Block{
     String name;
-    int age;
     static int balance;
 
     Block(){
@@ -33,6 +32,7 @@ class Block{
         System.out.println("我是非静态代码块");
         age =23;
     }
+    int age=10;
 
 
     //静态代码块

@@ -11,7 +11,8 @@ package com.atguigu13.idea.debug;
  */
 public class Debug03 {
     public static void main(String[] args) {
-
+        Person p1 = new Person(3);
+        System.out.println(p1.toString());
 
     }
 }

@@ -11,16 +11,16 @@ public class InterviewTest2 {
         //题目1：
         int i = 10;
         double d = 10.2;
-//        System.out.println(i == d);//
+        System.out.println(i == d);// false
         //题目2：
         Integer i1 = 10;
         Double d1 = 10.2;
-//		System.out.println(i1 == d1);//
+//		System.out.println(i1 == d1);// false
 
         //题目3：
         Integer m = 1000;
         double n = 1000;
-        System.out.println(m == n);//
+        System.out.println(m == n);//true  m进行了拆箱操作，转换成了int 然后int又自动提升到double
 
         //题目4：
         Integer x = 1000;
