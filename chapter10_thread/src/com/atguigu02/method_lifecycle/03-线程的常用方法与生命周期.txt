@@ -23,7 +23,7 @@ isAlive():判断当前期线程是否存活
 
 过时方法：
 stop()
-suspend\resume
+suspend\resume：暂停\恢复
 
 3. 线程的优先级：
 >getPriority() : 获取线程的优先级（默认为5，最低为1，最高为10）

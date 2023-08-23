@@ -18,11 +18,11 @@ class SalaryTicket implements Runnable{
 
         while (true){
             if(ticket > 0){
-//                try {
-//                    Thread.sleep(10);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println(Thread.currentThread().getName() + "售票，票号为：" + ticket--);
             }else{
                 break;
