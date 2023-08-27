@@ -1,0 +1,31 @@
+
+1.实现对象的排序，可以考虑两种方法：自然排序(comparable接口实现)，定制排序（comparator接口实现）
+
+2. 方式一：实现comparable接口的方式
+实现步骤：
+① 具体的类A实现comparable接口
+② 重写Comparable接口的compareTo方法，在此方法中指明类A的对象的大小的标准
+③ 创建类A的多个实例，进行大小的比较或者排序（Array.sort(A[]);
+
+
+3. 方式二：实现Comparator接口的方式
+实现步骤：
+① 创建了一个实现了Comparator接口的实现类
+② 实现类重写了Compartor接口中的抽象方法compare(Object o1 , Object o2)，并再次方法中指明比较大小的标准
+③ 创建实现类的实例，并作为参数放入sort中
+
+4. 对比两种方式：
+
+角度一：
+    自然排序：单一的，唯一的
+    定制排序：灵活的，多样的
+
+角度二：
+    自然排序：一劳永逸的
+    定制排序：临时的
+
+角度三：细节
+    自然排序：对应的接口是Comparable,对应的抽象方法是compareTo(Object o)
+    定制排序：对应的接口是Comparator,对的的抽象方法是compare(Object o1 , Object o2);
+
+

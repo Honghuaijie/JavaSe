@@ -1,0 +1,52 @@
+
+1. 三个类的对比:String、StringBuffer、StringBuilder
+>String:不可变的字符序列；底层使用char[]数组（jdk8及之前）;底层使用byte[]（JDK9及之后)
+>StringBuffer：可变的字符序列；JDK1.0声明的，线程安全的。效率低;底层使用char[]数组（jdk8及之前），底层使用byte[]（JDK9及之后)
+>StringBuilder：可变的字符序列；JDK5.0声明的，线程不安全的。效率高;底层使用char[]数组（jdk8及之前），底层使用byte[]（JDK9及之后)
+
+
+
+2. StringBuffer/StringBuilder的可变性分析（源码分析）：
+
+StringBuffer来说：
+内部的属性有：
+    char[] value; //存储字符序列
+    int count; //实际存储的字符个数
+
+StringBuffer sBuffer1 = new StringBuffer(); //底层创建了一个 char[] value = new char[16];
+StringBuffer sBuffer1 = new StringBuffer("abc"); //底层创建了一个 char[] value = new char[16 + "abc".length];
+
+sBuffer1.append("a") //value[0]='a';
+sBuffer1.append("bc") //value[1]='b'; value[2]='c';
+。。。不断的添加，一旦count超过了value的.length时，就需要扩容，默认扩容为原有容量的两倍 +2.
+并将原有value数组中的元素，复制到新的数组中。
+
+
+3. 源码启示：
+> 如果开发中需要频繁的针对于字符串进行增删改等操作，建议使用StringBuffer或StringBuilder，
+    因为String 效率低
+> 如果开发中不涉及到线程安全问题，StringBuilder,如果设计到线程安全问题就用StringBuffer
+> 如果开发中大体确定要操作的字符个数，建议使用带int capacity参数的构造器，因为可以避免低层多次扩容，性能更高
+
+
+4. StringBuffer和StringBuilder中的常用方法
+
+增
+    append(xx)
+删
+    delete(int start, int end)：
+    deleteCharAt(int index)：
+改
+    replace(int start, int end, String str)：
+    setCharAt(int index, char c)
+查
+    charAt(int index)
+插入
+    insert(int index, xx)
+长度
+    length()
+
+reverse()：反转
+5. 对比三者的执行效率
+
+StringBuilder > StringBuffer > String

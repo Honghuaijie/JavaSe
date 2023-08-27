@@ -39,6 +39,8 @@ interface Flyable{
 interface Attackable{
     //省略public abstract
     void attackAble();
+
+
 }
 
 class Bullet implements Flyable,Attackable{

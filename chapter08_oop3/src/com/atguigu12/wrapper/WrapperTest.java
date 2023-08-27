@@ -21,7 +21,7 @@ public class WrapperTest {
 //    自动装箱
     @Test
     public void test4(){
-        //自动装箱：基本数据类型 -->包装类
+        //自动装箱： 基本数据类型-->包装类
         int i1 = 10;
         Integer ii1 = i1;
         Boolean bb2 = false;

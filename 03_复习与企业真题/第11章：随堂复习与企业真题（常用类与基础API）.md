@@ -60,8 +60,9 @@
 
 ```java
 String str = new String("test");
-
+首先在堆空间创建一个String对象，如果字符串常量池中没有”test“就在常量池中创建一个”test“对象
 String str = "test";
+直接在常量池中创建一个“test”对象
 ```
 
 略
@@ -104,6 +105,24 @@ String：提供字符串常量池。
 可以。从jdk7开始可以使用
 
 #### 8. String中有哪些方法?列举几个（闪*购）
+
+toCharArray()
+
+valueOf
+
+replace
+
+equals
+
+compareTo
+
+comtains
+
+subString
+
+startsWith
+
+endsWith
 
 。。。
 
