@@ -1,11 +1,14 @@
 
 
-1. 类SuperA是类A的父类，则G<SuperA> 与 G<A>的关系：
-
+1. 类SuperA是类A的父类，则G<SuperA> 与 G<A>的关系：没有任何关系，是并列的关系，没有如何子父类的关系
+比如：ArrayList<Object>   ArrayList<String>  这两者没有任何关系
 
 
 2. 类SuperA是类A的父类或接口，SuperA<G> 与 A<G>的关系：
+SuperA<G> 与 A<G> 继承或实现的关系
+即 A<G>的实例可以赋值给SuperA<G>类型的引用（或变量）
 
+比如： ArrayList<String> 和List<String>
 
 
 

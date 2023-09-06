@@ -12,8 +12,8 @@ package com.atguigu11.annotation;
  */
 public class AnnotationTest {
     public static void main(String[] args) {
-        @SuppressWarnings("unused") int num = 20;
-
+        int num = 20;
+        @SuppressWarnings("unused")
         Person p1 = new Person("hong");
         System.out.println(p1);
     }

@@ -1,0 +1,30 @@
+
+1. File类的理解
+> File类位于java.io包下，本章中涉及到的相关流也都声明在java.io包下。
+> File类的一个对象，对应与操作系统下的一个文件或一个文件目录（或文件夹）
+> File类中声明了新建、删除、获取名称、修改名称等方法，并没有涉及到对文件内容的读写操作。
+        要想实现对文件内容的读写，我们就需要使用io流
+> File类的对象通常是作为io流操作的文件的端点出现。
+        >代码层面：将File类的对象作为参数传递到IO流相关类的构造器中
+
+2. 内部api使用说明
+2.1 构造器
+- public File(String pathname) ` ：以pathname为路径创建File对象，可以是绝对路径或者相对路径，
+                如果pathname是相对路径，则默认的当前路径在系统属性user.dir中存储。
+- `public File(String parent, String child) ` ：以parent为父路径，child为子路径创建File对象。
+- `public File(File parent, String child)` ：根据一个父File对象和子文件路径创建File对象
+
+2.2 方法
+
+
+
+
+3. 概念：
+绝对路径：从盘符开始的路径，这是一个完整的路径。
+
+相对路径：相对于`项目目录`的路径，这是一个便捷的路径，开发中经常使用。
+
+     - IDEA中，main中的文件的相对路径，是相对于"`当前工程`"
+     - IDEA中，单元测试方法中的文件的相对路径，是相对于"`当前module`"
+
+

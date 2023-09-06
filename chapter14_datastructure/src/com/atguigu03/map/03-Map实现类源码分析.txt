@@ -1,0 +1,80 @@
+
+一、HashMap
+1. HashMap中元素的特点
+
+
+
+2. HashMap源码解析
+2.1 jdk7中创建对象和添加数据过程(以JDK1.7.0_07为例说明)：
+put(key1,value1)
+首先计算key1的哈希值1(hashCode())，然后根据哈希值1计算出哈希值2(hash()),
+最后利用哈希值2计算出索引位置i (indexOf)
+ 1.索引位置i上没有元素，就添加成功  -->情况1
+ 2.索引位置i上有元素（key2,value2）则继续判断哈希值2，  -->哈希冲突
+    2.1如果key1的哈希值2不等于key2的哈希值2，就添加成功  -->情况2
+    2.2如果key1的哈希值2等于key2的哈希值2，就通过key1.equals(key2)比较
+        2.2.1如果key1.equals(key2)结果为false，就添加成功 -->情况3
+        2.2.2如果key1.equals(key2)结果为true，就将value1替换value2（修改操作）
+
+说明：情况1：将（key1，value1）存放到数组的索引i的位置
+     情况2，情况3：（key1，value1）元素与现有的（key2，value2）构成单向链表结构，（key1，value1）指向（key2，value2）
+
+随着不断的添加元素，在满足如下的条件的情况下，会考虑扩容：
+(size >= threshold) && (null != table[i])
+当元素的个数达到临界值(-> 数组的长度 * 加载因子)时，就考虑扩容。默认的临界值 = 16 * 0.75 --> 12.
+默认扩容为原来的2倍。
+
+
+
+2.2 jdk8与jdk7的不同之处(以jdk1.8.0_271为例)：
+①使用HashMap()的构造器创建对象时，并没有在底层初始化长度为16的table数组。
+                      jdk7 是在对象创建时，初始化数组
+                      jdk8  是在第一次添加元素时，初始化数组
+② jdk8中添加的key,value封装到了HashMap.Node类的对象中。而非jdk7中的HashMap.Entry。
+
+③jdk8中新增的元素所在的索引位置如果有其他元素。在经过一系列判断后，
+    如果能添加，则是旧的元素指向新的元素。而非jdk7中的新的元素指向旧的元素。“七上八下”
+④jdk7时底层的数据结构是：数组+单向链表。 而jdk8时，底层的数据结构是：数组+单向链表+红黑树。
+        红黑树出现的时机：当某个索引位置i上的链表的长度达到8，且数组的长度超过64时，此索引位置上的元素要从单向链表改为红黑树。
+ 如果索引i位置是红黑树的结构，当不断删除元素的情况下，当前索引i位置上的元素的个数低于6时，要从红黑树改为单向链表。
+
+JDK8中的HashMap
+添加/修改操作：将（key1,value1)传入map中
+1.利用key1的hashCode方法计算出哈希值1，在哈希值1计算出哈希值2，之后再利用哈希值2计算出（key1,value1)准备存放在数组中的索引值i。
+2.1 如果table=null：初始化数组，长度为16，并将（key1,value1)生成node对象，并放入数组中的索引值i的位置
+2.2 如果table！=null，找到数组中索引值为i的位置上的元素，
+                    判断元素是否==null，如果等于就将（key1,value1)生成node对象，并放入数组中的索引值i的位置
+                   如果元素存在，就判断   （key1,value1)和元素（key2,value2)的哈希值2是否相等
+                                      哈希值2相等 ：则判断key1.equals(kley2) 如果true此put就为修改操作，用value1替换value2，并将vlaue return出去
+                                      哈希值2不相等|哈希值2相等但是key1.equals(kley2)为false：
+                                                判断该元素的结构是红黑树还是单向链表
+                                                如果是单向链表，
+
+
+
+2.3 属性/字段：
+static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;   //默认的初始化长度16
+static final int MAXIMUM_CAPACITY = 1 << 30;        // 最大长度
+static final float DEFAULT_LOAD_FACTOR = 0.75f;  //默认的负载因子
+static final int TREEIFY_THRESHOLD = 8;  //树化阈值
+static final int UNTREEIFY_THRESHOLD = 6;   //反树化阈值
+static final int MIN_TREEIFY_CAPACITY = 64; //最小树化长度
+
+transient Node<K,V>[] table; //数组
+transient int size;  //记录有效映射关系的对数，也是Entry对象的个数
+int threshold; //阈值，当size达到阈值时，考虑扩容
+final float loadFactor; //加载因子，影响扩容的频率
+
+二、LinkedHashMap
+1. LinkedHashMap 与 HashMap 的关系:
+LinkedHashMap 是 HashMap的子类。
+LinkedHashMap和HashMap使用 的数组 + 单向链表 + 红黑树基础上，有增加了一对双向链表，记录添加的（key，value）的
+先后顺序，便于我们遍历所有的key-value。
+
+
+2. 底层结构：
+
+
+三、HashSet和LinkedHashSet的源码分析
+
+
